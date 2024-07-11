@@ -16,10 +16,10 @@ read.map <- function(file = NULL) {
     init <- read.table(file, sep = ",", header = FALSE)
 
     if (ncol(init) == 3) {
-      colnames(init) <- c("marker", "chr", "bp")
+      colnames(init) <- c("marker", "chr", "cM")
     } else {
       head(init)
-      stop("Input table must contain at least 3 columns ('marker','lingroup','bp').")
+      stop("Input table must contain at least 3 columns ('marker','lingroup','bp/cM').")
     }
     return(init)
 }
