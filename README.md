@@ -4,9 +4,11 @@
 [![](https://img.shields.io/github/last-commit/mschemmel/gmap.svg)](https://github.com/mschemmel/gmap/commits/master)
 [![Codecov test coverage](https://codecov.io/gh/mschemmel/gmap/branch/master/graph/badge.svg)](https://codecov.io/gh/mschemmel/gmap?branch=master)
 
-# gmap
-An R package to visualize genetic maps.
+# gmap-modified
+An R package to visualize genetic maps. A fork.
 
+## Modifications
+Modified to use csv style inputs and physical map rather than cM (genetic map).
 
 ## Installation
 ### Development version
