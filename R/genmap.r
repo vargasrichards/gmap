@@ -20,6 +20,7 @@
 #' @param border.linewidth Value of line width of border around plot
 #' @param border.color Color of border around plot
 #' @param ... further parameter of plot function (base R)
+#' @param verbosity Report progress on console
 #' @importFrom graphics box mtext rect segments text
 #' @export
 
@@ -43,6 +44,7 @@ genmap <- function(linmap = NULL,
 				   border.linetype = "solid",
 				   border.linewidth = 1,
 				   border.color = "black",
+		   		   verbosity = FALSE,
 				   ...){
 
 		  # error handling
@@ -59,16 +61,16 @@ genmap <- function(linmap = NULL,
 		  TelomereSize <- linkage.width * 100
 		  plotSizeX <- length(lingroup) * 80
 		  plotSizeY <- 1000
-
+		  print('Calculating placements of marker and linkage group')
 		  # calculate and populate original table with absolute positions of every marker and linkage group
 		  locations <- placements(linmap, lingroup, plotSizeX, plotSizeY, TelomereSize)
 		  
 		  # store midpoints of drawn linkage groups
 		  mid <- unique(locations$leftborder) + (TelomereSize / 2)
-
+			
 		  # set default marker color
 		  locations$color <- marker.color
-
+		  print('plotting area')
 		  # plot blank area
 		  plot(c(-100, plotSizeX),
 			   c(-100, plotSizeY + 200),
