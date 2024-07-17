@@ -8,6 +8,7 @@
 #' @return Modified data frame extended by positional values
 #' @export
 placements <- function(dfori, chromosomes, xsize, ysize, telsize){
+  library(dplyr)
   # prepare data frame of calculated locations
   targets_chr <- data.frame(targets = as.character(chromosomes),
                             leftborder = as.numeric(linkage.group.position(xsize, length(chromosomes))),
@@ -19,7 +20,7 @@ placements <- function(dfori, chromosomes, xsize, ysize, telsize){
   # prepare main table of requested chromosomes
   df <- merge(dfori, targets_chr, by.x = "chr", by.y = "targets")
   df <- df[df$chr %in% targets_chr$targets, ]
-
+  print(str(df))
   # calculate marker position
   df$startabsolute <- round((ysize - (df$height * (df$cM / df$size))), 1)
   df$endabsolute <- round((ysize - (df$height * ((df$cM + 0.01) / df$size))), 1)
