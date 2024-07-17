@@ -22,6 +22,8 @@ placements <- function(dfori, chromosomes, xsize, ysize, telsize){
   df <- df[df$chr %in% targets_chr$targets, ]
   print(str(df))
   # calculate marker position
+  df$cM <- as.numeric(as.character(df$cM))
+  df$size <- as.numeric(as.character(df$size))
   df$startabsolute <- round((ysize - (df$height * (df$cM / df$size))), 1)
   df$endabsolute <- round((ysize - (df$height * ((df$cM + 0.01) / df$size))), 1)
 
